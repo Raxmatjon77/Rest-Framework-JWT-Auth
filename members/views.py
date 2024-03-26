@@ -65,7 +65,11 @@ class UserLoginAPIView(APIView):
 			response = Response()
 			response.set_cookie(key='access_token', value=user_access_token, httponly=True)
 			response.data = {
-				'access_token': user_access_token
+				"username": user_instance.username,
+   					 "email": user_instance.email,
+				  'access_token': user_access_token,
+				
+				
 			}
 			return response
 

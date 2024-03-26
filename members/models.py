@@ -17,15 +17,16 @@ class CustomUserManager(BaseUserManager):
 		user.save()
 		return user
 
-	def create_superuser(self, email, password=None):
+	def create_superuser(self, email,username, password=None):
 		if not email:
 			raise ValueError('A user email is needed.')
 
 		if not password:
 			raise ValueError('A user password is needed.')
 
-		user = self.create_user(email, password)
+		user = self.create_user(email, password,)
 		user.is_superuser = True
+		user.username = username
 		user.is_staff = True
 		user.save()
 		return user
